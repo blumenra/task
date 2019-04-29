@@ -1,0 +1,21 @@
+
+.flex-container {
+    position: relative;
+    top:200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .flex-container > div {
+    background-color: #FAFAFA;
+    border: 2px solid #D9E6EB;
+    border-radius: 23px;
+    width: 500px;
+    margin: 10px;
+    text-align: center;
+    line-height: 110px;
+    font-size: 30px;
+    
+  }
+  
