@@ -10,7 +10,6 @@ export class AnswersComponent implements OnInit {
   options:boolean[] = [];
   currHoveredOption:number;
   answers:string[] = [];
-  isMouseOver:boolean = false;
 
   constructor() { 
 
@@ -23,22 +22,19 @@ export class AnswersComponent implements OnInit {
 
   initOptions(){
     for(let i=0; i < this.answers.length; i++)
-      this.options.push(false);
+      this.options.push(true);
   }
   
   onMouseOver(event){
     this.currHoveredOption = event.srcElement.id;
-    this.options[this.currHoveredOption] = !this.options[this.currHoveredOption];
+    this.options[this.currHoveredOption] = false;
+    console.log(event.srcElement.id);
   }
 
   onMouseOut(event){
     
-    this.options[this.currHoveredOption] = !this.options[this.currHoveredOption];
+    this.options[this.currHoveredOption] = true;
     this.currHoveredOption = -1;
-  }
-
-  flipMouseOverVal(){
-    this.isMouseOver = !this.isMouseOver;
   }
 
   shuffle(){
