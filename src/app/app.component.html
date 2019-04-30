@@ -1,19 +1,20 @@
 <div class="top">
-  <img src="./assets/Group 5.png" class="rotate180">
+  <img src="./assets/Group 5.png" class="rotation180">
   <div class="top-front">
-    <img src="./assets/Group 4.png">
+      <img src="./assets/Group 4.png" class="logo">
   </div>
 </div>
-
 
 <app-answers></app-answers>
 
 <div class="wrapper">
-  <button id="okButton" class="button">OK</button>
+  <button id="okButton" class="button" (mouseover)="onMouseHover($event)" (mouseout)="onMouseOut($event)">OK</button>
 </div>
 
-<app-questions-bar style="position:relative; top: 250px;"></app-questions-bar>
+<app-questions-bar></app-questions-bar>
 
-<div class="bottom">
-  <img src="./assets/Group 5.png" >
+
+<div>
+  <img src="./assets/Group 5.png" class="bottom">
 </div>
+
