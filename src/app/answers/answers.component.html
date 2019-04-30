@@ -1,8 +1,11 @@
 
 <div class="flex-container">
-  <div *ngFor="let answer of answers; let i = index" id="{{i}}"  class="option" (mouseover)="onMouseOver($event)" (mouseleave)="onMouseOut(event)">
-    <span class="hover" [hidden]="options[i]">
-      hover
+  <div *ngFor="let answer of answers; let i = index" id="{{i}}"  [ngClass]="options[i]['classes']"
+                  (mouseover)="onMouseOver($event)"
+                  (mouseleave)="onMouseLeave($event)"
+                  (click)="onMouseClick($event)">
+    <span class="eventSign" [hidden]="options[i]['hideEventSign']">
+      {{eventSign}}
     </span>
     <span class="answer">
       {{answer}}

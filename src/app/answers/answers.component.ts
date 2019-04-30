@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { hostViewClassName } from '@angular/compiler';
+import { Option } from './Option'
 
 @Component({
   selector: 'app-answers',
@@ -7,34 +9,85 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnswersComponent implements OnInit {
 
-  options:boolean[] = [];
   currHoveredOption:number;
+  currClickedOption:number;
   answers:string[] = [];
+  eventSign:string;
+  HOVER_SIGN:string = "Hover";
+  SELECT_SIGN:string = "Select";
+  options:Option[] = [];
 
   constructor() { 
 
     this.answers.push("Demeter", "Zeus", "Athena", "Apollo");
     this.initOptions();
     this.currHoveredOption = -1;
-
+    this.currClickedOption = -1;
+    this.eventSign = this.HOVER_SIGN;
+    
     this.shuffle();
   }
-
-  initOptions(){
-    for(let i=0; i < this.answers.length; i++)
-      this.options.push(true);
-  }
   
+  initOptions(){
+    for(let i=0; i < this.answers.length; i++){
+
+      this.options.push({
+        hideEventSign: true,
+        clicked: false,
+        classes:{
+          normal: true,
+          clicked: false    
+        }
+      });
+    }
+  }
+
   onMouseOver(event){
+
+    if(this.isOptionClicked())
+      return;
+
     this.currHoveredOption = event.srcElement.id;
-    this.options[this.currHoveredOption] = false;
+    this.options[this.currHoveredOption]['hideEventSign'] = false;
     console.log(event.srcElement.id);
   }
 
-  onMouseOut(event){
+  isOptionClicked(){
+    return (0 <= this.currClickedOption && this.currClickedOption < this.answers.length);
+  }
+
+  onMouseLeave(event){
     
-    this.options[this.currHoveredOption] = true;
+    if(this.isOptionClicked())
+      return;
+
+    this.options[this.currHoveredOption]['hideEventSign'] = true;
     this.currHoveredOption = -1;
+  }
+
+  onMouseClick(event){
+    
+    if(this.currClickedOption == event.srcElement.id){
+      this.currClickedOption = -1;
+      this.options[event.srcElement.id]['clicked'] = false;
+      this.options[event.srcElement.id]['classes']['clicked'] = false;
+      this.eventSign = this.HOVER_SIGN;
+      return;
+    }
+
+    if(this.isOptionClicked()){
+      this.options[this.currClickedOption]['hideEventSign'] = true;
+      this.options[event.srcElement.id]['hideEventSign'] = false;
+      this.options[this.currClickedOption]['clicked'] = false;
+      this.options[event.srcElement.id]['clicked'] = true;
+      this.options[this.currClickedOption]['classes']['clicked'] = false;
+    }
+    
+    this.options[event.srcElement.id]['classes']['clicked'] = true;
+
+    this.currClickedOption = event.srcElement.id;
+    this.eventSign = this.SELECT_SIGN;
+    console.log(event.srcElement.id);
   }
 
   shuffle(){

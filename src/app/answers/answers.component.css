@@ -7,7 +7,7 @@
     flex-wrap: wrap;
   }
   
-  .flex-container > div {
+  .normal {
     background-color: #FAFAFA;
     border: 2px solid #D9E6EB;
     border-radius: 23px;
@@ -19,7 +19,7 @@
     position:relative;
   }
 
-  .hover{
+  .eventSign{
     position:absolute;
     left:50px;
 
@@ -27,4 +27,18 @@
     font-size: 24px;
     color: #FF0000;
     letter-spacing: 0;
+  }
+
+  .answer{
+    font-family: OpenSans-Semibold;
+    font-size: 28px;
+    color: #0D7BAB;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .clicked{  
+    background: #FAFAFA;
+    border: 4px solid #0D7BAB;
+    border-radius: 23px;
   }
