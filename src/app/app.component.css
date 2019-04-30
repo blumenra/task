@@ -1,4 +1,10 @@
 
+.underLogo{
+    position: relative;
+    top:150px;
+    /* left: auto; */
+}
+
 .top-front
 {
     position: absolute;
