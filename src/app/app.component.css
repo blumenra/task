@@ -50,7 +50,7 @@
     top:220px;
 }
 
-.button{
+.buttonMouseout{
     background: #F0F0F0;
     border-radius: 100px;
     width: 300px;
@@ -62,3 +62,17 @@
     letter-spacing: 0;
     text-align: center;
 }
+
+.buttonMouseover{
+    background: #F68034;
+    border-radius: 100px;
+    width: 300px;
+    height: 60px;
+
+    font-family: OpenSans-Semibold;
+    font-size: 30px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+}
+

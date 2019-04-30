@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  isMouseOverOkButton:boolean = false;
+
+  constructor(){
+    
+  }
+
+  onMouseHover(event){
+    this.flipOkButtonClasses();
+  }
+
+  onMouseOut(event){
+    this.flipOkButtonClasses();
+  }
+
+  flipOkButtonClasses(){
+    this.isMouseOverOkButton = !this.isMouseOverOkButton;
+  }
 }
