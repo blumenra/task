@@ -50,10 +50,10 @@
     height:10.8%;
 }
 
-.wrapper{
+.buttonWrapper{
     text-align: center;
     position: relative;
-    top:220px;
+    top:150px;
 }
 
 .buttonMouseout{
