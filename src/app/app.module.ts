@@ -5,13 +5,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AnswersComponent } from './answers/answers.component';
 import { QuestionsBarComponent } from './questions-bar/questions-bar.component';
+import { QuestionComponent } from './question/question.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AnswersComponent,
-    QuestionsBarComponent
+    QuestionsBarComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule

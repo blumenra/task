@@ -1,0 +1,23 @@
+.question{
+    /* position: relative; */
+    font-family: OpenSans;
+    font-size: 24px;
+    color: #223336;
+    letter-spacing: 0;
+    /* float:left; */
+    /* width:100%; */
+    margin:10px;
+}
+
+.questionSign{
+    /* position: relative; */
+    /* left:400px; */
+    /* width:100%; */
+    margin:10px;
+    /* float:left; */
+
+    font-family: OpenSans-Bold;
+    font-size: 32px;
+    color: #0D7BAB;
+    letter-spacing: 0;
+}

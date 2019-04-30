@@ -22,6 +22,6 @@ export class AppComponent {
   }
 
   flipOkButtonClasses(){
-    this.isMouseOverOkButton = !this.isMouseOverOkButton;
+    // this.isMouseOverOkButton = !this.isMouseOverOkButton;
   }
 }
