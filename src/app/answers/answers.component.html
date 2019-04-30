@@ -1,6 +1,43 @@
 
 <div class="flex-container">
-  <div *ngFor="let answer of answers">
-    {{answer}}
+  <!-- <div *ngFor="let answer of answers; let i = index" id="{{'option' + i}}"  class="option" (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut(event)">
+    <span class="hover" [hidden]="(currHoveredOption == 1) ? true : false">
+      hover
+    </span>
+    <span class="answer">
+      {{answer}}
+    </span>
+  </div> -->
+  <div id="0" class="option" (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut(event)">
+    <span class="hover" [hidden]="!options[0]">
+        hover
+      </span>
+      <span class="answer">
+        {{answers[0]}}
+      </span>
   </div>
+  <div id="1" class="option" (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut(event)">
+      <span class="hover" [hidden]="!options[1]">
+          hover
+        </span>
+        <span class="answer">
+            {{answers[1]}}
+        </span>
+    </div>
+    <div id="2" class="option" (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut(event)">
+        <span class="hover" [hidden]="!options[2]">
+            hover
+          </span>
+          <span class="answer">
+              {{answers[2]}}
+          </span>
+      </div>
+      <div id="3" class="option" (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut(event)">
+          <span class="hover" [hidden]="!options[3]">
+              hover
+            </span>
+            <span class="answer">
+                {{answers[3]}}
+            </span>
+        </div>
 </div>
