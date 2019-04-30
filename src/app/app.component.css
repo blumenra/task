@@ -18,13 +18,15 @@
 .top{
     position:absolute;
     top:0;
-    background-size: cover;
+    width:100%;
+    text-align: center;
 }
 
 .bottom{
     position:absolute;
     bottom:0;
-    background-size: cover;
+    width:100%;
+    text-align: center;
 }
 
 .wrapper{
