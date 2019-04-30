@@ -1,0 +1,17 @@
+.wrapper{
+    display:flex;
+    justify-content: center;
+    position: relative;
+    bottom: 15px;
+}
+
+.wrapper > div{
+    
+    /* Circle */
+    height: 10px;
+    width: 10px;
+    background: #C9CFD3;
+    border-radius: 50%;
+
+    margin:5px;
+}

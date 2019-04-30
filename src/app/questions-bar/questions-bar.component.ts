@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionsBarComponent implements OnInit {
 
-  constructor() { }
+  numOfAuestions:number;
+  circles:any[] = [];
+  constructor() {
+    this.numOfAuestions = 15;
+    for(let i=0; i < this.numOfAuestions; i++)
+      this.circles.push(0);
+
+    console.log(this.circles);
+  }
 
   ngOnInit() {
   }
