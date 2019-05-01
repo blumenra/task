@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Api } from '../Models/Api';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class QuestionsService {
@@ -13,14 +15,9 @@ export class QuestionsService {
 
   data:any;
 
-  public importQuestions(){
-    console.log("Service!!");
+  public importQuestions(): Observable<Api>{
+
     
-    this.http.get(this.DBUrl).subscribe(
-      questions => console.log(questions)
-    );
-
-
-    return 666;
+    return this.http.get<Api>(this.DBUrl);
   }
 }
