@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { hostViewClassName } from '@angular/compiler';
-import { Option } from './Option'
+import { Option } from '../Models/Option'
 
 @Component({
   selector: 'app-answers',
