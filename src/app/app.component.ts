@@ -8,20 +8,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   isMouseOverOkButton:boolean = false;
+  selected:boolean = false;
+  selectedClass = {};
 
   constructor(){
-    
+    this.selectedClass = {
+      optionSelected: this.selected,
+      regular: true
+    }
   }
 
-  onMouseHover(event){
-    this.flipOkButtonClasses();
+  updateOptionSelected($event){
+    this.selected = $event;
+    this.selectedClass['optionSelected'] = $event;
   }
 
-  onMouseOut(event){
-    this.flipOkButtonClasses();
-  }
-
-  flipOkButtonClasses(){
-    // this.isMouseOverOkButton = !this.isMouseOverOkButton;
-  }
 }

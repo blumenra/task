@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { hostViewClassName } from '@angular/compiler';
 import { Option } from './Option'
 
@@ -8,6 +8,8 @@ import { Option } from './Option'
   styleUrls: ['./answers.component.css']
 })
 export class AnswersComponent implements OnInit {
+
+  @Output() public selectEvent = new EventEmitter<boolean>();
 
   currHoveredOption:number;
   currClickedOption:number;
@@ -72,6 +74,7 @@ export class AnswersComponent implements OnInit {
       this.options[event.srcElement.id]['clicked'] = false;
       this.options[event.srcElement.id]['classes']['clicked'] = false;
       this.eventSign = this.HOVER_SIGN;
+      this.selectEvent.emit(false);
       return;
     }
 
@@ -87,6 +90,9 @@ export class AnswersComponent implements OnInit {
 
     this.currClickedOption = event.srcElement.id;
     this.eventSign = this.SELECT_SIGN;
+    
+    this.selectEvent.emit(true);
+    
     console.log(event.srcElement.id);
   }
 

@@ -7,10 +7,10 @@
 
 <app-question class="underLogo"></app-question>
 
-<app-answers></app-answers>
+<app-answers (selectEvent)="updateOptionSelected($event)"></app-answers>
 
 <div class="buttonWrapper">
-  <button id="okButton" [className]="isMouseOverOkButton ? 'buttonMouseover' : 'buttonMouseout'" (mouseover)="onMouseHover($event)" (mouseout)="onMouseOut($event)">OK</button>
+  <button id="okButton" [ngClass]="selectedClass">OK</button>
 </div>
 
 <app-questions-bar></app-questions-bar>
