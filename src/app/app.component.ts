@@ -12,12 +12,25 @@ export class AppComponent {
   selectedClass = {};
   mouseOver:boolean;
 
+  OK_TEXT:string = "OK";
+  CONTINUE_TEXT:string = "CONTINUE";
+  okbuttonText:string;
+
   constructor(){
     this.selectedClass = {
       optionSelected: this.selected,
       regular: true
     }
     this.mouseOver = false;
+    this.okbuttonText = this.OK_TEXT;
+  }
+
+  onClickOkButton(event){
+    
+    if(!this.selected)
+      return;
+    
+    this.okbuttonText = this.CONTINUE_TEXT;
   }
 
   onMouseOver(event){

@@ -4,7 +4,7 @@
                   (mouseover)="onMouseOver($event)"
                   (mouseleave)="onMouseLeave($event)"
                   (click)="onMouseClick($event)">
-    <span class="eventSign" [hidden]="options[i]['hideEventSign']">
+    <span class="eventSign" *ngIf="!options[i]['hideEventSign']">
       {{eventSign}}
     </span>
     <span class="answer">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { hostViewClassName } from '@angular/compiler';
 import { Option } from './Option'
 
@@ -10,7 +10,8 @@ import { Option } from './Option'
 export class AnswersComponent implements OnInit {
 
   @Output() public selectEvent = new EventEmitter<boolean>();
-
+  // @Input() public correctAns:boolean;
+  correctAns:boolean = false;
   currHoveredOption:number;
   currClickedOption:number;
   answers:string[] = [];
@@ -38,7 +39,8 @@ export class AnswersComponent implements OnInit {
         clicked: false,
         classes:{
           normal: true,
-          clicked: false    
+          clicked: false,
+          correctAnswer: this.correctAns   
         }
       });
     }
@@ -75,6 +77,9 @@ export class AnswersComponent implements OnInit {
       this.options[event.srcElement.id]['classes']['clicked'] = false;
       this.eventSign = this.HOVER_SIGN;
       this.selectEvent.emit(false);
+
+      this.correctAns = true;
+
       return;
     }
 
