@@ -9,10 +9,10 @@
 <app-answers (selectEvent)="updateOptionSelected($event)"></app-answers>
 
 <div class="buttonWrapper">
-  <span class="buttonAsideMsg">
+  <span class="buttonAsideMsg" [hidden]="!mouseOver">
     Hover/Click
   </span>
-  <button id="okButton" [ngClass]="selectedClass">OK</button>
+  <button id="okButton" [ngClass]="selectedClass" (mouseover)="onMouseOver($event)" (mouseleave)="onMouseLeave($event)">OK</button>
 </div>
 
 <app-questions-bar></app-questions-bar>
