@@ -6,10 +6,12 @@
 </div>
 
 <app-question class="underLogo"></app-question>
-
 <app-answers (selectEvent)="updateOptionSelected($event)"></app-answers>
 
 <div class="buttonWrapper">
+  <span class="buttonAsideMsg">
+    Hover/Click
+  </span>
   <button id="okButton" [ngClass]="selectedClass">OK</button>
 </div>
 
