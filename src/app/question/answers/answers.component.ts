@@ -62,6 +62,7 @@ export class AnswersComponent implements OnInit {
 
       this.correctAns = true;
 
+      this.enbleHoverEffectOnUnselectedOptions();
       return;
     }
 
@@ -73,12 +74,14 @@ export class AnswersComponent implements OnInit {
       this.turnClickedClassOff(this.currClickedOption);
     }
     
-    this.turnClickedClassOn(event.srcElement.id);
-
+    
     this.currClickedOption = event.srcElement.id;
     this.eventSign = this.SELECT_SIGN;
     
     this.selectEvent.emit(true);
+    
+    this.disableHoverEffectOnUnselectedOptions();
+    this.turnClickedClassOn(event.srcElement.id);
     
     console.log(event.srcElement.id);
   }
@@ -93,11 +96,26 @@ export class AnswersComponent implements OnInit {
     this.options[id]['classes']['defaultOption'] = false;
   }
 
-  disableOverEffectOnUnselectedOptions(){
-    // for(let i=0; i < this.options.length; i++){
-    //   if(i != this.currClickedOption)
-    //     //TODO
-    // }
+  disableHoverEffectOnOption(id){
+    this.options[id]['classes']['clicked'] = false;
+    this.options[id]['classes']['defaultOption'] = false;
+  }
+
+  disableHoverEffectOnUnselectedOptions(){
+    for(let i=0; i < this.options.length; i++){
+      if(i != this.currClickedOption)
+        this.disableHoverEffectOnOption(i);
+    }
+  }
+
+  enbleHoverEffectOnOption(id){
+    this.turnClickedClassOff(id);
+  }
+
+  enbleHoverEffectOnUnselectedOptions(){
+    for(let i=0; i < this.options.length; i++){
+        this.enbleHoverEffectOnOption(i);
+    }
   }
 
   shuffle(){

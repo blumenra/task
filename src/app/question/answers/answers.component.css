@@ -8,9 +8,7 @@
   }
   
 .defaultOption {
-  background-color: #FAFAFA;
   border: 2px solid #D9E6EB;
-  border-radius: 23px;
 }
 
 .eventSign{
@@ -41,22 +39,23 @@
 }
 
 .option{
+  border: 2px solid #D9E6EB;
+  
   width: 500px;
   margin: 10px;
   text-align: center;
   line-height: 110px;
   font-size: 30px;
   position:relative;
+
+  background: #FAFAFA;
+  border-radius: 23px;
 }
 
 .clicked{  
-  background: #FAFAFA;
   border: 4px solid #0D7BAB;
-  border-radius: 23px;
 }
 
 .correctAnswer{
-  background: #FAFAFA;
   border: 4px solid #33C933;
-  border-radius: 23px;
 }
