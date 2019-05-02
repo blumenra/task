@@ -41,18 +41,19 @@ export class AppComponent implements OnInit {
 
   onClickOkButton(event){
     
+    if(this.selected < 0)
+      return;
+
     if(this.okbuttonIsClicked){
 
       this.selectedClass['optionSelected'] = false;
       this.okbuttonText = this.OK_TEXT;
       this.okbuttonIsClicked = false;
+      this.selected = -1;
 
       return;
     }
 
-    if(!this.selected)
-      return;
-    
     this.okbuttonText = this.CONTINUE_TEXT;
     this.okbuttonIsClicked = true;
   }
