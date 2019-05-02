@@ -1,8 +1,7 @@
 
 .underLogo{
     position: relative;
-    top:150px;
-    /* left: auto; */
+    top:100px;
 }
 
 .top-front
@@ -53,10 +52,12 @@
 .buttonWrapper{
     text-align: center;
     position: relative;
-    top:150px;
+    top:160px;
 }
 
 .buttonAsideMsg{
+    display:none;
+
     position:absolute;
     top:31%;
     left:31.5%;
@@ -93,3 +94,6 @@
     text-align: center;
 }
 
+.optionSelected:hover + .buttonAsideMsg{
+    display: block;
+}

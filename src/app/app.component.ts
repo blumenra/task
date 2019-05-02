@@ -10,10 +10,13 @@ import { Question } from './Models/Question';
 
 export class AppComponent implements OnInit {
   title = 'app';
-  isMouseOverOkButton:boolean = false;
   selected:boolean = false;
   selectedClass = {};
-  mouseOver:boolean;
+
+  OK_TEXT:string = "OK";
+  CONTINUE_TEXT:string = "CONTINUE";
+  okbuttonText:string;
+
   questions:Question[];
 
   constructor(private qService: QuestionsService){
@@ -22,7 +25,7 @@ export class AppComponent implements OnInit {
         optionSelected: this.selected,
         regular: true
     }
-    this.mouseOver = false;
+    this.okbuttonText = this.OK_TEXT;
   }
   
   ngOnInit(){
@@ -33,14 +36,13 @@ export class AppComponent implements OnInit {
                 }
     );
   }
-  
-  onMouseOver(event){
-    if(this.selected)
-      this.mouseOver = true;
-  }
 
-  onMouseLeave(event){
-      this.mouseOver = false;
+  onClickOkButton(event){
+    
+    if(!this.selected)
+      return;
+    
+    this.okbuttonText = this.CONTINUE_TEXT;
   }
 
   updateOptionSelected($event){

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { hostViewClassName } from '@angular/compiler';
 import { Option } from '../Models/Option'
 
@@ -10,7 +10,8 @@ import { Option } from '../Models/Option'
 export class AnswersComponent implements OnInit {
 
   @Output() public selectEvent = new EventEmitter<boolean>();
-
+  // @Input() public correctAns:boolean;
+  correctAns:boolean = false;
   currHoveredOption:number;
   currClickedOption:number;
   answers:string[] = [];
@@ -34,37 +35,19 @@ export class AnswersComponent implements OnInit {
     for(let i=0; i < this.answers.length; i++){
 
       this.options.push({
-        hideEventSign: true,
         clicked: false,
         classes:{
-          normal: true,
-          clicked: false    
+          option: true,
+          defaultOption: true,
+          clicked: false,
+          correctAnswer: this.correctAns   
         }
       });
     }
   }
 
-  onMouseOver(event){
-
-    if(this.isOptionClicked())
-      return;
-
-    this.currHoveredOption = event.srcElement.id;
-    this.options[this.currHoveredOption]['hideEventSign'] = false;
-    console.log(event.srcElement.id);
-  }
-
   isOptionClicked(){
     return (0 <= this.currClickedOption && this.currClickedOption < this.answers.length);
-  }
-
-  onMouseLeave(event){
-    
-    if(this.isOptionClicked())
-      return;
-
-    this.options[this.currHoveredOption]['hideEventSign'] = true;
-    this.currHoveredOption = -1;
   }
 
   onMouseClick(event){
@@ -73,8 +56,13 @@ export class AnswersComponent implements OnInit {
       this.currClickedOption = -1;
       this.options[event.srcElement.id]['clicked'] = false;
       this.options[event.srcElement.id]['classes']['clicked'] = false;
+      this.turnClickedClassOff(event.srcElement.id);
       this.eventSign = this.HOVER_SIGN;
       this.selectEvent.emit(false);
+
+      this.correctAns = true;
+
+      this.enbleHoverEffectOnUnselectedOptions();
       return;
     }
 
@@ -83,17 +71,51 @@ export class AnswersComponent implements OnInit {
       this.options[event.srcElement.id]['hideEventSign'] = false;
       this.options[this.currClickedOption]['clicked'] = false;
       this.options[event.srcElement.id]['clicked'] = true;
-      this.options[this.currClickedOption]['classes']['clicked'] = false;
+      this.turnClickedClassOff(this.currClickedOption);
     }
     
-    this.options[event.srcElement.id]['classes']['clicked'] = true;
-
+    
     this.currClickedOption = event.srcElement.id;
     this.eventSign = this.SELECT_SIGN;
     
     this.selectEvent.emit(true);
     
+    this.disableHoverEffectOnUnselectedOptions();
+    this.turnClickedClassOn(event.srcElement.id);
+    
     console.log(event.srcElement.id);
+  }
+
+  turnClickedClassOff(id:number){
+    this.options[id]['classes']['clicked'] = false;
+    this.options[id]['classes']['defaultOption'] = true;
+  }
+
+  turnClickedClassOn(id:number){
+    this.options[id]['classes']['clicked'] = true;
+    this.options[id]['classes']['defaultOption'] = false;
+  }
+
+  disableHoverEffectOnOption(id){
+    this.options[id]['classes']['clicked'] = false;
+    this.options[id]['classes']['defaultOption'] = false;
+  }
+
+  disableHoverEffectOnUnselectedOptions(){
+    for(let i=0; i < this.options.length; i++){
+      if(i != this.currClickedOption)
+        this.disableHoverEffectOnOption(i);
+    }
+  }
+
+  enbleHoverEffectOnOption(id){
+    this.turnClickedClassOff(id);
+  }
+
+  enbleHoverEffectOnUnselectedOptions(){
+    for(let i=0; i < this.options.length; i++){
+        this.enbleHoverEffectOnOption(i);
+    }
   }
 
   shuffle(){
