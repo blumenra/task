@@ -1,7 +1,6 @@
 
 .flex-container {
     position: relative;
-    top:110px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -40,11 +39,11 @@
 
 .option{
   border: 2px solid #D9E6EB;
-  
+
   width: 500px;
   margin: 10px;
   text-align: center;
-  line-height: 110px;
+  line-height: 120px;
   font-size: 30px;
   position:relative;
 

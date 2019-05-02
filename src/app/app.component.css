@@ -1,8 +1,7 @@
 
 .underLogo{
     position: relative;
-    top:150px;
-    /* left: auto; */
+    top:100px;
 }
 
 .top-front
@@ -53,7 +52,7 @@
 .buttonWrapper{
     text-align: center;
     position: relative;
-    top:150px;
+    top:160px;
 }
 
 .buttonAsideMsg{
