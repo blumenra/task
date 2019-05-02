@@ -57,6 +57,8 @@
 }
 
 .buttonAsideMsg{
+    display:none;
+
     position:absolute;
     top:31%;
     left:31.5%;
@@ -65,6 +67,10 @@
     color: #FF0000;
     letter-spacing: 0;
     text-align: center;
+}
+
+.regular:hover + .buttonAsideMsg{
+    display:block;
 }
 
 .regular{
