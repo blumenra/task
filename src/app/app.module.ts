@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AnswersComponent } from './answers/answers.component';
+import { AnswersComponent } from './question/answers/answers.component';
 import { QuestionsBarComponent } from './questions-bar/questions-bar.component';
 import { QuestionComponent } from './question/question.component';
 
