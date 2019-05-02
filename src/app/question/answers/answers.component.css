@@ -7,26 +7,17 @@
     flex-wrap: wrap;
   }
   
-.normal {
+.defaultOption {
   background-color: #FAFAFA;
   border: 2px solid #D9E6EB;
   border-radius: 23px;
-  width: 500px;
-  margin: 10px;
-  text-align: center;
-  line-height: 110px;
-  font-size: 30px;
-  position:relative;
 }
 
 .eventSign{
   display:none;
+  
   position:absolute;
   left:50px;
-}
-
-.normal:hover .eventSign{
-  display:block;
 
   font-family: OpenSans-Semibold;
   font-size: 24px;
@@ -34,11 +25,28 @@
   letter-spacing: 0;
 }
 
+.defaultOption:hover .eventSign{
+  display:block;
+}
+
 .answer{
   font-family: OpenSans-Semibold;
   font-size: 28px;
   color: #0D7BAB;
   letter-spacing: 0;
+}
+
+.clicked .eventSign{
+  display: block;
+}
+
+.option{
+  width: 500px;
+  margin: 10px;
+  text-align: center;
+  line-height: 110px;
+  font-size: 30px;
+  position:relative;
 }
 
 .clicked{  

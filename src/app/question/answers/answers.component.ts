@@ -37,7 +37,8 @@ export class AnswersComponent implements OnInit {
       this.options.push({
         clicked: false,
         classes:{
-          normal: true,
+          option: true,
+          defaultOption: true,
           clicked: false,
           correctAnswer: this.correctAns   
         }
@@ -55,6 +56,7 @@ export class AnswersComponent implements OnInit {
       this.currClickedOption = -1;
       this.options[event.srcElement.id]['clicked'] = false;
       this.options[event.srcElement.id]['classes']['clicked'] = false;
+      this.turnClickedClassOff(event.srcElement.id);
       this.eventSign = this.HOVER_SIGN;
       this.selectEvent.emit(false);
 
@@ -68,10 +70,10 @@ export class AnswersComponent implements OnInit {
       this.options[event.srcElement.id]['hideEventSign'] = false;
       this.options[this.currClickedOption]['clicked'] = false;
       this.options[event.srcElement.id]['clicked'] = true;
-      this.options[this.currClickedOption]['classes']['clicked'] = false;
+      this.turnClickedClassOff(this.currClickedOption);
     }
     
-    this.options[event.srcElement.id]['classes']['clicked'] = true;
+    this.turnClickedClassOn(event.srcElement.id);
 
     this.currClickedOption = event.srcElement.id;
     this.eventSign = this.SELECT_SIGN;
@@ -79,6 +81,23 @@ export class AnswersComponent implements OnInit {
     this.selectEvent.emit(true);
     
     console.log(event.srcElement.id);
+  }
+
+  turnClickedClassOff(id:number){
+    this.options[id]['classes']['clicked'] = false;
+    this.options[id]['classes']['defaultOption'] = true;
+  }
+
+  turnClickedClassOn(id:number){
+    this.options[id]['classes']['clicked'] = true;
+    this.options[id]['classes']['defaultOption'] = false;
+  }
+
+  disableOverEffectOnUnselectedOptions(){
+    // for(let i=0; i < this.options.length; i++){
+    //   if(i != this.currClickedOption)
+    //     //TODO
+    // }
   }
 
   shuffle(){
