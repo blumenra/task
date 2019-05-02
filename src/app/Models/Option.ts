@@ -1,7 +1,7 @@
 
 export interface Option{
 
-    hideEventSign:boolean,
+    answer:string;
     clicked:boolean,
     classes:{}
 }
