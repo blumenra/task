@@ -10,13 +10,13 @@ import { Question } from './Models/Question';
 
 export class AppComponent implements OnInit {
   title = 'app';
-  selected:boolean = false;
+  selected:number;
   selectedClass = {};
 
   OK_TEXT:string = "OK";
   CONTINUE_TEXT:string = "CONTINUE";
   okbuttonText:string;
-
+  okbuttonIsClicked:boolean;
   questions:Question[];
 
   constructor(private qService: QuestionsService){
@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
         regular: true
     }
     this.okbuttonText = this.OK_TEXT;
+    this.okbuttonIsClicked = false;
+    this.selected = -1;
   }
   
   ngOnInit(){
@@ -43,11 +45,12 @@ export class AppComponent implements OnInit {
       return;
     
     this.okbuttonText = this.CONTINUE_TEXT;
+    this.okbuttonIsClicked = true;
   }
 
   updateOptionSelected($event){
     this.selected = $event;
-    this.selectedClass['optionSelected'] = $event;
+    this.selectedClass['optionSelected'] = (0 <= $event);
   }
 
 }

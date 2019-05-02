@@ -1,11 +1,13 @@
 
 <div class="flex-container">
-  <div *ngFor="let answer of answers; let i = index" id="{{i}}"  [ngClass]="options[i]['classes']" (click)="onMouseClick($event)">
-    <span class="eventSign">
+  <div *ngFor="let option of options; let i = index" id="{{i}}" [ngClass]="options[i]['classes']" (click)="onMouseClick($event)">
+    <img src="./assets/Group.png" *ngIf="options[i]['classes']['correctAns']">
+    <img src="./assets/Group 3.png" *ngIf="options[i]['classes']['inCorrectAns']">
+    <span class="eventSign" *ngIf="!options[i]['classes']['inCorrectAns'] && !options[i]['classes']['correctAns']">
       {{eventSign}}
     </span>
-    <span class="answer">
-      {{answer}}
+    <span class="answerText">
+      {{option.answer}}
     </span>
   </div>
 </div>

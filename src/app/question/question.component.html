@@ -7,5 +7,7 @@
     </span>
   </p>
 
-  <app-answers style="position:relative; top:20px;" (selectEvent)="updateOptionSelected($event)"></app-answers>
+  <app-answers style="position:relative; top:20px;" (selectEvent)="updateOptionSelected($event)" 
+                                                    [okbuttonIsClicked]="okbuttonIsClicked"
+                                                    [options]="options"></app-answers>
   

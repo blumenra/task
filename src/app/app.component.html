@@ -5,7 +5,9 @@
   </div>
 </div>
 
-<app-question class="underLogo" (selectEvent)="updateOptionSelected($event)"></app-question>
+<app-question class="underLogo" 
+          (selectEvent)="updateOptionSelected($event)"
+          [okbuttonIsClicked]="okbuttonIsClicked"></app-question>
 
 <div class="buttonWrapper">
   <button id="okButton" [ngClass]="selectedClass" (click)="onClickOkButton($event)">

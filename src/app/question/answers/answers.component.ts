@@ -1,53 +1,31 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { hostViewClassName } from '@angular/compiler';
-import { Option } from '../Models/Option'
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { Option } from '../../Models/Option'
 
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',
   styleUrls: ['./answers.component.css']
 })
-export class AnswersComponent implements OnInit {
+export class AnswersComponent implements OnInit, OnChanges {
 
-  @Output() public selectEvent = new EventEmitter<boolean>();
-  // @Input() public correctAns:boolean;
-  correctAns:boolean = false;
-  currHoveredOption:number;
+  @Output() public selectEvent = new EventEmitter<number>();
+  @Input() public okbuttonIsClicked:boolean;
+  @Input() public options:Option[];
+
   currClickedOption:number;
-  answers:string[] = [];
+
   eventSign:string;
   HOVER_SIGN:string = "Hover";
   SELECT_SIGN:string = "Select";
-  options:Option[] = [];
 
   constructor() { 
 
-    this.answers.push("Demeter", "Zeus", "Athena", "Apollo");
-    this.initOptions();
-    this.currHoveredOption = -1;
     this.currClickedOption = -1;
     this.eventSign = this.HOVER_SIGN;
-    
-    this.shuffle();
-  }
-  
-  initOptions(){
-    for(let i=0; i < this.answers.length; i++){
-
-      this.options.push({
-        clicked: false,
-        classes:{
-          option: true,
-          defaultOption: true,
-          clicked: false,
-          correctAnswer: this.correctAns   
-        }
-      });
-    }
   }
 
   isOptionClicked(){
-    return (0 <= this.currClickedOption && this.currClickedOption < this.answers.length);
+    return (0 <= this.currClickedOption && this.currClickedOption < this.options.length);
   }
 
   onMouseClick(event){
@@ -58,11 +36,9 @@ export class AnswersComponent implements OnInit {
       this.options[event.srcElement.id]['classes']['clicked'] = false;
       this.turnClickedClassOff(event.srcElement.id);
       this.eventSign = this.HOVER_SIGN;
-      this.selectEvent.emit(false);
-
-      this.correctAns = true;
-
+      this.selectEvent.emit(this.currClickedOption);
       this.enbleHoverEffectOnUnselectedOptions();
+
       return;
     }
 
@@ -74,11 +50,10 @@ export class AnswersComponent implements OnInit {
       this.turnClickedClassOff(this.currClickedOption);
     }
     
-    
     this.currClickedOption = event.srcElement.id;
     this.eventSign = this.SELECT_SIGN;
     
-    this.selectEvent.emit(true);
+    this.selectEvent.emit(this.currClickedOption);
     
     this.disableHoverEffectOnUnselectedOptions();
     this.turnClickedClassOn(event.srcElement.id);
@@ -118,14 +93,11 @@ export class AnswersComponent implements OnInit {
     }
   }
 
-  shuffle(){
-      let j:number, x:string, i:number;
-      for (i = this.answers.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          x = this.answers[i];
-          this.answers[i] = this.answers[j];
-          this.answers[j] = x;
-      }
+  ngOnChanges(){
+
+    if(!this.okbuttonIsClicked)
+      return;
+
   }
 
   ngOnInit() {
