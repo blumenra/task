@@ -35,7 +35,6 @@ export class AnswersComponent implements OnInit {
     for(let i=0; i < this.answers.length; i++){
 
       this.options.push({
-        hideEventSign: true,
         clicked: false,
         classes:{
           normal: true,
@@ -46,27 +45,8 @@ export class AnswersComponent implements OnInit {
     }
   }
 
-  onMouseOver(event){
-
-    if(this.isOptionClicked())
-      return;
-
-    this.currHoveredOption = event.srcElement.id;
-    this.options[this.currHoveredOption]['hideEventSign'] = false;
-    console.log(event.srcElement.id);
-  }
-
   isOptionClicked(){
     return (0 <= this.currClickedOption && this.currClickedOption < this.answers.length);
-  }
-
-  onMouseLeave(event){
-    
-    if(this.isOptionClicked())
-      return;
-
-    this.options[this.currHoveredOption]['hideEventSign'] = true;
-    this.currHoveredOption = -1;
   }
 
   onMouseClick(event){
