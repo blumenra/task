@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Question } from './Question';
 
 @Component({
@@ -8,8 +8,11 @@ import { Question } from './Question';
 })
 export class QuestionComponent implements OnInit {
 
+  @Output() public selectEvent = new EventEmitter<boolean>();
+  
   question:Question;
   index:number;
+
   constructor() { 
     
     this.index = 1;
@@ -25,6 +28,10 @@ export class QuestionComponent implements OnInit {
         "Athena"
       ]
     }
+  }
+
+  updateOptionSelected($event){
+    this.selectEvent.emit($event);
   }
 
   ngOnInit() {
