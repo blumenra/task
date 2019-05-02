@@ -85,12 +85,17 @@ export class QuestionComponent implements OnInit, OnChanges{
 
   ngOnChanges(){
     
-    if(!this.okbuttonIsClicked){ return };
+    if(!this.okbuttonIsClicked){ 
+      this.options[this.selectedOptionIdx].classes["correctAns"] = false;
+      this.options[this.selectedOptionIdx].classes["inCorrectAns"] = false;
+    }
+    else{
 
-    if(this.selectedOptionIdx == this.correctAnsIdx)
-      this.options[this.selectedOptionIdx].classes["correctAns"] = true;
-    else
-      this.options[this.selectedOptionIdx].classes["inCorrectAns"] = true;
+      if(this.selectedOptionIdx == this.correctAnsIdx)
+        this.options[this.selectedOptionIdx].classes["correctAns"] = true;
+      else
+        this.options[this.selectedOptionIdx].classes["inCorrectAns"] = true;
+    }
 
     this.options[this.selectedOptionIdx].classes["clicked"] = false;
 
