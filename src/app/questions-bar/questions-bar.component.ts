@@ -27,9 +27,6 @@ export class QuestionsBarComponent implements OnInit, OnChanges {
 
   ngOnChanges(chages:SimpleChanges){
   
-    if(chages.answeredCount)
-      this.answeredCount++;
-
     if(!this.initialized && this.numOfQuestions >= 0)  {
       this.initBar();
       this.initialized = true;
