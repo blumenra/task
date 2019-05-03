@@ -39,33 +39,31 @@ export class AnswersComponent implements OnInit, OnChanges {
     // If another option is already selected
     if(this.isOptionClicked()){
       this.options[this.currClickedOption]['clicked'] = false;
-      this.options[event.srcElement.id]['clicked'] = true;
+      this.options[event.currentTarget.id]['clicked'] = true;
       this.turnClickedClassOff(this.currClickedOption);
     }
     
-    this.currClickedOption = event.srcElement.id;
+    this.currClickedOption = event.currentTarget.id;
     this.eventSign = this.SELECT_SIGN;
     
     this.selectEvent.emit(this.currClickedOption);
     
     this.disableHoverEffectOnUnselectedOptions();
-    this.turnClickedClassOn(event.srcElement.id);
-    
-    console.log(event.srcElement.id);
+    this.turnClickedClassOn(event.currentTarget.id);
   }
 
   handleSelectionCancelClick(event) {
     this.currClickedOption = -1;
-    this.options[event.srcElement.id]['clicked'] = false;
-    this.options[event.srcElement.id]['classes']['clicked'] = false;
-    this.turnClickedClassOff(event.srcElement.id);
+    this.options[event.currentTarget.id]['clicked'] = false;
+    this.options[event.currentTarget.id]['classes']['clicked'] = false;
+    this.turnClickedClassOff(event.currentTarget.id);
     this.eventSign = this.HOVER_SIGN;
     this.selectEvent.emit(this.currClickedOption);
     this.enbleHoverEffectOnUnselectedOptions();
   }
 
   isCancelSelectionClick(event){
-    return this.currClickedOption == event.srcElement.id;
+    return this.currClickedOption == event.currentTarget.id;
   }
 
   turnClickedClassOff(id:number){
