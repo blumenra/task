@@ -3,6 +3,18 @@
   <img src="./assets/Group 4.png" class="logo">
 </div>
 
+<div class="endOfGame" *ngIf="noMoreQuestions()">
+  <p style="margin:auto;">
+    <span>
+      You have answered {{ numOfCorrectAnswers }}/{{ numOfQuestions }} questions correctly
+    </span>
+    <br>
+    <span>
+      $$$ Thank you for playing $$$
+    </span>
+  </p>
+</div>
+
 <div *ngIf="!noMoreQuestions()">
   <app-question class="underLogo" 
           (selectEvent)="updateOptionSelected($event)"

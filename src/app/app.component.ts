@@ -49,10 +49,6 @@ export class AppComponent implements OnInit {
       this.currentQuestion = this.questions[++this.currentQuestionIdx];
       this.selectedOptionIdx = -1;
       
-      if(this.noMoreQuestions()){
-        alert("You were correct in " + this.numOfCorrectAnswers + "/" + this.numOfQuestions + " questions!");
-      }
-      
       return;
     }
 

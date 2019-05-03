@@ -46,3 +46,12 @@
     height:10.8%;
 }
 
+.endOfGame{
+    color: gold;
+    font-size: 50px;
+    position: absolute;
+    font-weight: 300;
+    text-align: center;
+    top:35%;
+    left:22%;
+}
