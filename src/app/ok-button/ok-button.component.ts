@@ -33,6 +33,9 @@ export class OkButtonComponent implements OnInit,OnChanges {
   
   onClickOkButton(event){
     
+    if(this.selected < 0)
+      return;
+
     this.onClick.emit(this.state);
     (this.state == OkButtonState.CONTINUE) ? this.setButtonToOk() : this.setButtonToContinue();
   }
