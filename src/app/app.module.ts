@@ -9,13 +9,15 @@ import { QuestionComponent } from './question/question.component';
 
 import { QuestionsService } from './Services/questions.service';
 import { HttpClientModule } from '@angular/common/http';
+import { OkButtonComponent } from './ok-button/ok-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnswersComponent,
     QuestionsBarComponent,
-    QuestionComponent
+    QuestionComponent,
+    OkButtonComponent
   ],
   imports: [
     BrowserModule,
