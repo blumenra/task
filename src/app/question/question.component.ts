@@ -2,6 +2,7 @@
 import { Question } from '../Models/Question';
 import { Option } from '../Models/Option';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { OkButtonState } from '../Models/OkButtonState';
 
 @Component({
   selector: 'app-question',
@@ -11,7 +12,7 @@ import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange
 export class QuestionComponent implements OnInit, OnChanges{
 
   @Output() public selectEvent = new EventEmitter<number>();
-  @Input() public okbuttonIsClicked:boolean;
+  @Input() public okButtonState:OkButtonState;
   @Input() public question:Question;
   @Input() public questionIdx:number;
 
@@ -82,7 +83,7 @@ export class QuestionComponent implements OnInit, OnChanges{
     if(this.selectedOptionIdx < 0)
       return;
       
-    if(!this.okbuttonIsClicked){ 
+    if(this.okButtonState == OkButtonState.OK){ 
       this.options[this.selectedOptionIdx].classes["correctAns"] = false;
       this.options[this.selectedOptionIdx].classes["inCorrectAns"] = false;
     }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { QuestionsService } from './Services/questions.service';
 import { Question } from './Models/Question';
+import { OkButtonState } from './Models/OkButtonState';
 
 @Component({
   selector: 'app-root',
@@ -11,27 +12,16 @@ import { Question } from './Models/Question';
 export class AppComponent implements OnInit {
   title = 'app';
   selected:number;
-  selectedClass = {};
 
-  OK_TEXT:string = "OK";
-  CONTINUE_TEXT:string = "CONTINUE";
-  okbuttonText:string;
-  okbuttonIsClicked:boolean;
-
+  okButtonState:OkButtonState;
   questions:Question[];
   currentQuestion:Question;
   currentQuestionIdx:number;
   numOfQuestions:number;
 
   constructor(private qService: QuestionsService){
-    
-    this.selectedClass = {
-        optionSelected: false,
-        regular: true
-    }
-    this.okbuttonText = this.OK_TEXT;
-    this.okbuttonIsClicked = false;
     this.selected = -1;
+    this.okButtonState = OkButtonState.OK;
   }
   
   ngOnInit(){
@@ -45,29 +35,24 @@ export class AppComponent implements OnInit {
     );
   }
 
-  onClickOkButton(event){
+  onClickOkButton($event){
     
     if(this.selected < 0)
       return;
 
-    if(this.okbuttonIsClicked){ // continue case
+    if($event == OkButtonState.CONTINUE){
 
-      this.selectedClass['optionSelected'] = false;
-      this.okbuttonText = this.OK_TEXT;
-      this.okbuttonIsClicked = false;
-      this.selected = -1;
+      this.okButtonState = OkButtonState.OK;
       this.currentQuestion = this.questions[++this.currentQuestionIdx];
-
+      this.selected = -1;
       return;
     }
 
-    this.okbuttonText = this.CONTINUE_TEXT;
-    this.okbuttonIsClicked = true;
+    this.okButtonState = OkButtonState.CONTINUE;
   }
 
   updateOptionSelected($event){
     this.selected = $event;
-    this.selectedClass['optionSelected'] = (0 <= $event);
   }
 
 }

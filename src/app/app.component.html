@@ -7,18 +7,11 @@
 
 <app-question class="underLogo" 
           (selectEvent)="updateOptionSelected($event)"
-          [okbuttonIsClicked]="okbuttonIsClicked"
+          [okButtonState]="okButtonState"
           [question]="currentQuestion"
           [questionIdx]="currentQuestionIdx"></app-question>
 
-<div class="okButton">
-  <button [ngClass]="selectedClass" (click)="onClickOkButton($event)">
-    {{okbuttonText}}
-  </button>
-  <span class="buttonAsideMsg">
-    Hover/Click
-  </span>
-</div>
+<app-ok-button (onClick)="onClickOkButton($event)" [selected]="selected"></app-ok-button>
 
 <app-questions-bar class="questionsBar" 
                    [numOfQuestions]="numOfQuestions"
