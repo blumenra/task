@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Option } from '../../Models/Option'
+import { OkButtonState } from '../../Models/OkButtonState';
 
 @Component({
   selector: 'app-answers',
@@ -9,7 +10,7 @@ import { Option } from '../../Models/Option'
 export class AnswersComponent implements OnInit, OnChanges {
 
   @Output() public selectEvent = new EventEmitter<number>();
-  @Input() public okbuttonIsClicked:boolean;
+  @Input() public okButtonState:OkButtonState;
   @Input() public options:Option[];
 
   currClickedOption:number;
@@ -29,6 +30,10 @@ export class AnswersComponent implements OnInit, OnChanges {
   }
 
   onMouseClick(event){
+    
+    // If the question was answered and waiting to the user to move to the next question
+    if(this.okButtonState == OkButtonState.CONTINUE)
+      return;
     
     // Handle the case when the click is to cancel a selection
     if(this.isCancelSelectionClick(event)){
@@ -100,7 +105,7 @@ export class AnswersComponent implements OnInit, OnChanges {
 
   ngOnChanges(){
 
-    if(!this.okbuttonIsClicked)
+    if(this.okButtonState == OkButtonState.OK)
       return;
 
   }
