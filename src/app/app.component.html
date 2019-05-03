@@ -5,6 +5,7 @@
 
 <app-question class="underLogo" 
           (selectEvent)="updateOptionSelected($event)"
+          (correctAnsEvent)="onCorrectAnswer()"
           [okButtonState]="okButtonState"
           [question]="currentQuestion"
           [questionIdx]="currentQuestionIdx">

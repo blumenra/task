@@ -19,7 +19,10 @@ export class AppComponent implements OnInit {
   currentQuestionIdx:number;
   numOfQuestions:number;
 
+  numOfCorrectAnswers:number;
+
   constructor(private qService: QuestionsService){
+    this.numOfCorrectAnswers = 0;
     this.selected = -1;
     this.okButtonState = OkButtonState.OK;
   }
@@ -49,6 +52,10 @@ export class AppComponent implements OnInit {
     }
 
     this.okButtonState = OkButtonState.CONTINUE;
+  }
+
+  onCorrectAnswer(){
+    this.numOfCorrectAnswers++;
   }
 
   updateOptionSelected($event){

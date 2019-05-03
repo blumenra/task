@@ -12,6 +12,8 @@ import { OkButtonState } from '../Models/OkButtonState';
 export class QuestionComponent implements OnInit, OnChanges{
 
   @Output() public selectEvent = new EventEmitter<number>();
+  @Output() public correctAnsEvent = new EventEmitter();
+  
   @Input() public okButtonState:OkButtonState;
   @Input() public question:Question;
   @Input() public questionIdx:number;
@@ -89,8 +91,10 @@ export class QuestionComponent implements OnInit, OnChanges{
     }
     else{
 
-      if(this.selectedOptionIdx == this.correctAnsIdx)
+      if(this.selectedOptionIdx == this.correctAnsIdx){
         this.options[this.selectedOptionIdx].classes["correctAns"] = true;
+        this.correctAnsEvent.emit();
+      }
       else
         this.options[this.selectedOptionIdx].classes["inCorrectAns"] = true;
     }
