@@ -11,8 +11,8 @@
           [question]="currentQuestion"
           [questionIdx]="currentQuestionIdx"></app-question>
 
-<div class="buttonWrapper">
-  <button id="okButton" [ngClass]="selectedClass" (click)="onClickOkButton($event)">
+<div class="okButton">
+  <button [ngClass]="selectedClass" (click)="onClickOkButton($event)">
     {{okbuttonText}}
   </button>
   <span class="buttonAsideMsg">
@@ -20,9 +20,9 @@
   </span>
 </div>
 
-<app-questions-bar  [numOfQuestions]="numOfQuestions"
-                    [answeredCount]="currentQuestionIdx"
-></app-questions-bar>
+<app-questions-bar class="questionsBar" [numOfQuestions]="numOfQuestions"
+                    [answeredCount]="currentQuestionIdx">
+</app-questions-bar>
 
 <div>
   <img src="./assets/Group 5.png" class="bottom">

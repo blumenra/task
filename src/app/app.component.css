@@ -49,10 +49,10 @@
     height:10.8%;
 }
 
-.buttonWrapper{
+.okButton{
     text-align: center;
     position: relative;
-    top:160px;
+    top:200px;
 }
 
 .buttonAsideMsg{
@@ -96,4 +96,9 @@
 
 .optionSelected:hover + .buttonAsideMsg{
     display: block;
+}
+
+.questionsBar{
+    position: relative;
+    top: 215px;
 }
