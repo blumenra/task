@@ -14,8 +14,10 @@ export class QuestionsBarComponent implements OnInit, OnChanges {
   circles:any[];
   count:number;
   classes = {};
+  initialized:boolean;
 
   constructor() {
+    this.initialized = false;
     this.numOfQuestions = -1;
     this.classes = {
       wrapper: false,
@@ -28,8 +30,9 @@ export class QuestionsBarComponent implements OnInit, OnChanges {
     if(chages.answeredCount)
       this.answeredCount++;
 
-    if(this.numOfQuestions >= 0)  {
+    if(!this.initialized && this.numOfQuestions >= 0)  {
       this.initBar();
+      this.initialized = true;
     }
   }
     
