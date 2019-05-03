@@ -53,14 +53,20 @@
     text-align: center;
     position: relative;
     top:200px;
+    
+    width: 580px;
+    height: 60px;
+
+    margin:auto;
 }
 
 .buttonAsideMsg{
     display:none;
 
     position:absolute;
-    top:31%;
-    left:31.5%;
+    top:15px;
+    left: 10px;
+
     font-family: OpenSans-Semibold;
     font-size: 24px;
     color: #FF0000;
