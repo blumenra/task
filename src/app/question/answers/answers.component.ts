@@ -43,8 +43,6 @@ export class AnswersComponent implements OnInit, OnChanges {
     }
 
     if(this.isOptionClicked()){
-      this.options[this.currClickedOption]['hideEventSign'] = true;
-      this.options[event.srcElement.id]['hideEventSign'] = false;
       this.options[this.currClickedOption]['clicked'] = false;
       this.options[event.srcElement.id]['clicked'] = true;
       this.turnClickedClassOff(this.currClickedOption);
