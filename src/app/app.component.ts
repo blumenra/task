@@ -11,7 +11,7 @@ import { OkButtonState } from './Models/OkButtonState';
 
 export class AppComponent implements OnInit {
   title = 'app';
-  selected:number;
+  selectedOptionIdx:number;
 
   okButtonState:OkButtonState;
   questions:Question[];
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   constructor(private qService: QuestionsService){
     this.numOfCorrectAnswers = 0;
-    this.selected = -1;
+    this.selectedOptionIdx = -1;
     this.okButtonState = OkButtonState.OK;
   }
   
@@ -40,18 +40,33 @@ export class AppComponent implements OnInit {
 
   onClickOkButton($event){
     
-    if(this.selected < 0)
+    if(this.noOptionIsSelected())
       return;
 
-    if($event == OkButtonState.CONTINUE){
-
-      this.okButtonState = OkButtonState.OK;
-      this.currentQuestion = this.questions[++this.currentQuestionIdx];
-      this.selected = -1;
-      return;
+      
+      if($event == OkButtonState.CONTINUE){
+        
+        
+        this.okButtonState = OkButtonState.OK;
+        this.currentQuestion = this.questions[++this.currentQuestionIdx];
+        this.selectedOptionIdx = -1;
+        
+        if(this.noMoreQuestions()){
+          alert("You were correct in " + this.numOfCorrectAnswers + "/" + this.numOfQuestions + " questions!");
+        }
+        
+        return;
     }
 
     this.okButtonState = OkButtonState.CONTINUE;
+  }
+
+  noOptionIsSelected(){
+    return this.selectedOptionIdx < 0;
+  }
+
+  noMoreQuestions(){
+    return this.currentQuestionIdx == this.numOfQuestions;
   }
 
   onCorrectAnswer(){
@@ -59,7 +74,7 @@ export class AppComponent implements OnInit {
   }
 
   updateOptionSelected($event){
-    this.selected = $event;
+    this.selectedOptionIdx = $event;
   }
 
 }

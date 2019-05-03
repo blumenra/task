@@ -25,6 +25,9 @@ export class QuestionsBarComponent implements OnInit, OnChanges {
       this.initBar();
       this.initialized = true;
     }
+    
+    if(this.answeredCount == this.numOfQuestions)
+      return;
 
     if(this.initialized && chages.answeredCount){
       this.circles[this.answeredCount].classes['turnOn'] = true;
