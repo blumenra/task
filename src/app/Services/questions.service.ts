@@ -10,8 +10,7 @@ export class QuestionsService {
 
   constructor(private http:HttpClient) { 
 
-    // this.DBUrl = 'assets/api.1.json';
-    this.DBUrl = 'assets/api.json';
+    this.DBUrl = 'assets/api.1.json';
   }
 
   data:any;
