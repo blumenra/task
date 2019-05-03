@@ -1,7 +1,7 @@
 
 import { Question } from '../Models/Question';
 import { Option } from '../Models/Option';
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -12,31 +12,16 @@ export class QuestionComponent implements OnInit, OnChanges{
 
   @Output() public selectEvent = new EventEmitter<number>();
   @Input() public okbuttonIsClicked:boolean;
+  @Input() public question:Question;
+  @Input() public questionIdx:number;
 
-  question:Question;
   options:Option[];
   correctAnsIdx:number;
   selectedOptionIdx:number;
-  index:number;
 
   constructor() { 
     
-    this.index = 1;
     this.selectedOptionIdx = -1;
-    this.question = {
-      category: "Mythology",
-      type: "multiple",
-      difficulty: "easy",
-      question:"Who was the only god from Greece who did not get a name change in Rome?",
-      correct_answer:"Apollo",
-      incorrect_answers:[
-        "Demeter",
-        "Zeus",
-        "Athena"
-      ]
-    }
-
-    this.initOptions();
   }
 
   shuffle(collenction:any[]){
@@ -83,8 +68,17 @@ export class QuestionComponent implements OnInit, OnChanges{
     this.selectEvent.emit($event);
   }
 
-  ngOnChanges(){
+  ngOnChanges(changes:SimpleChanges){
     
+    if(changes.questionIdx != null){
+      
+      this.initOptions();
+      return;
+    }
+
+    if(this.selectedOptionIdx < 0)
+      return;
+      
     if(!this.okbuttonIsClicked){ 
       this.options[this.selectedOptionIdx].classes["correctAns"] = false;
       this.options[this.selectedOptionIdx].classes["inCorrectAns"] = false;

@@ -15,7 +15,7 @@
   
   position:absolute;
   left:50px;
-
+  top:32%;
   font-family: OpenSans-Semibold;
   font-size: 24px;
   color: #FF0000;
@@ -26,7 +26,11 @@
   display:block;
 }
 
-.answerText{
+.option .answerText{
+  
+  vertical-align: middle;
+  display: table-cell;
+
   font-family: OpenSans-Semibold;
   font-size: 28px;
   color: #496472;
@@ -45,9 +49,10 @@
   border: 2px solid #D9E6EB;
 
   width: 500px;
+  height:120px;
   margin: 10px;
   text-align: center;
-  line-height: 120px;
+  line-height: 40px;
   font-size: 30px;
   position:relative;
 

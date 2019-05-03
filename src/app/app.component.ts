@@ -17,12 +17,16 @@ export class AppComponent implements OnInit {
   CONTINUE_TEXT:string = "CONTINUE";
   okbuttonText:string;
   okbuttonIsClicked:boolean;
+
   questions:Question[];
+  currentQuestion:Question;
+  currentQuestionIdx:number;
+  numOfQuestions:number;
 
   constructor(private qService: QuestionsService){
     
     this.selectedClass = {
-        optionSelected: this.selected,
+        optionSelected: false,
         regular: true
     }
     this.okbuttonText = this.OK_TEXT;
@@ -32,10 +36,12 @@ export class AppComponent implements OnInit {
   
   ngOnInit(){
     this.qService.importQuestions().subscribe(
-        api => {
-                  this.questions = api['results'];
-                  console.log(this.questions);
-                }
+      api => {
+          this.questions = api['results'];
+          this.currentQuestionIdx = 0;
+          this.currentQuestion = this.questions[this.currentQuestionIdx];
+          this.numOfQuestions = this.questions.length;
+        }
     );
   }
 
@@ -44,12 +50,13 @@ export class AppComponent implements OnInit {
     if(this.selected < 0)
       return;
 
-    if(this.okbuttonIsClicked){
+    if(this.okbuttonIsClicked){ // continue case
 
       this.selectedClass['optionSelected'] = false;
       this.okbuttonText = this.OK_TEXT;
       this.okbuttonIsClicked = false;
       this.selected = -1;
+      this.currentQuestion = this.questions[++this.currentQuestionIdx];
 
       return;
     }
