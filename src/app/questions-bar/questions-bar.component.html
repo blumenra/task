@@ -1,4 +1,4 @@
 <div class="wrapper">
-  <div *ngFor="let circle of circles; let i = index" class="turnOn">
+  <div *ngFor="let circle of circles; let i = index" [ngClass]="circles[i].classes">
   </div>
 </div>
