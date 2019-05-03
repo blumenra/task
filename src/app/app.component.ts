@@ -43,19 +43,17 @@ export class AppComponent implements OnInit {
     if(this.noOptionIsSelected())
       return;
 
+    if($event == OkButtonState.CONTINUE){
       
-      if($event == OkButtonState.CONTINUE){
-        
-        
-        this.okButtonState = OkButtonState.OK;
-        this.currentQuestion = this.questions[++this.currentQuestionIdx];
-        this.selectedOptionIdx = -1;
-        
-        if(this.noMoreQuestions()){
-          alert("You were correct in " + this.numOfCorrectAnswers + "/" + this.numOfQuestions + " questions!");
-        }
-        
-        return;
+      this.okButtonState = OkButtonState.OK;
+      this.currentQuestion = this.questions[++this.currentQuestionIdx];
+      this.selectedOptionIdx = -1;
+      
+      if(this.noMoreQuestions()){
+        alert("You were correct in " + this.numOfCorrectAnswers + "/" + this.numOfQuestions + " questions!");
+      }
+      
+      return;
     }
 
     this.okButtonState = OkButtonState.CONTINUE;

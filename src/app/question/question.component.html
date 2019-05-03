@@ -1,13 +1,13 @@
 <p class="question">
-    <span class="questionSign">
-      Q:{{questionIdx+1}}
-    </span>
-    <span class="text">
-      {{(question) ? (question.question) : ""}}
-    </span>
-  </p>
+  <span class="questionSign">
+    Q:{{questionIdx+1}}
+  </span>
+  <span class="text">
+    {{(question) ? (question.question) : ""}}
+  </span>
+</p>
 
-  <app-answers style="position:relative; top:20px;" (selectEvent)="updateOptionSelected($event)" 
-                                                    [okButtonState]="okButtonState"
-                                                    [options]="options"></app-answers>
+<app-answers style="position:relative; top:20px;" (selectEvent)="updateOptionSelected($event)" 
+                                                  [okButtonState]="okButtonState"
+                                                  [options]="options"></app-answers>
   

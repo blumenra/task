@@ -17,7 +17,6 @@ export class QuestionsService {
 
   public importQuestions(): Observable<Api>{
 
-    
     return this.http.get<Api>(this.DBUrl);
   }
 }
