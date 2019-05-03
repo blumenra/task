@@ -36,6 +36,9 @@ export class QuestionComponent implements OnInit, OnChanges{
   
   initOptions(){
     
+    if(!this.question)
+      return;
+      
     let correctAns:Option = this.createOption(this.question.correct_answer);
     this.options = [];
     for(let i=0; i < this.question.incorrect_answers.length; i++){
@@ -70,7 +73,7 @@ export class QuestionComponent implements OnInit, OnChanges{
 
   ngOnChanges(changes:SimpleChanges){
     
-    if(changes.questionIdx != null){
+    if(changes.questionIdx){
       
       this.initOptions();
       return;
