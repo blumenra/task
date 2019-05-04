@@ -108,6 +108,7 @@ export class AnswersComponent implements OnInit, OnChanges {
     if(this.okButtonState == OkButtonState.OK)
       return;
 
+    this.eventSign = this.HOVER_SIGN;
   }
 
   ngOnInit() {
